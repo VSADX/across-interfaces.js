@@ -12,4 +12,6 @@ export function across<A,B,C,D,E,F,G,H,I,J>(fn:(f:new()=>B&C&D&E&F&G&H&I&J)=>{ne
 export function across<A,B,C,D,E,F,G,H,I,J,K>(fn:(f:new()=>B&C&D&E&F&G&H&I&J&K)=>{new():A},b:{new():B},c:{new():C},d:{new():D},e:{new():E},f:{new():F},g:{new():G},h:{new():H},i:{new():I},j:{new():J},k:{new():K}):<T>(t:{new():T})=>new()=>A&T
 export function across<A,B,C,D,E,F,G,H,I,J,K,L>(fn:(f:new()=>B&C&D&E&F&G&H&I&J&K&L)=>{new():A},b:{new():B},c:{new():C},d:{new():D},e:{new():E},f:{new():F},g:{new():G},h:{new():H},i:{new():I},j:{new():J},k:{new():K},l:{new():L}):<T>(t:{new():T})=>new()=>A&T
 
-export function I<F>(f: <T>(t:T) => F): F
+export function override<A,B>(override: A, previous: {new():B}): {new(): Omit<B, keyof A> & A}
+
+export function I<F extends (...args) => any>(f: F): ReturnType<F>
